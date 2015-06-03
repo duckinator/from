@@ -20,11 +20,27 @@ Or install it yourself as:
 
 ## Usage
 
-```ruby
-from('net/socket').import(:TCP, :UDP)
+`foo.rb`:
 
-TCP == Net::Socket::TCP #=> true
-UDP == Net::Socket::UDP #=> true
+```ruby
+module Foo
+  module Bar
+    # ...
+  end
+
+  module BAZ
+    # ...
+  end
+end
+```
+
+`bar.rb`:
+
+```ruby
+from('foo').import(:Bar, :BAZ)
+
+Bar == Foo::Bar #=> true
+BAZ == Bar::BAZ #=> true
 ```
 
 ## Limitations
