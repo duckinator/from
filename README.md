@@ -40,7 +40,7 @@ end
 from('foo').import(:Bar, :BAZ)
 
 Bar == Foo::Bar #=> true
-BAZ == Bar::BAZ #=> true
+BAZ == Foo::BAZ #=> true
 ```
 
 ## Limitations
