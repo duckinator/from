@@ -6,12 +6,16 @@ class From
   end
 
   def import(*constants)
-    constants.map do |k|
-      Kernel.const_set(k, @module.const_get(k))
-    end
+    import_to(Kernel, *constants)
   end
 
   private
+  def import_to(object, *constants)
+    constants.map do |k|
+      object.const_set(k, @module.const_get(k))
+    end
+  end
+
   # Given Object and "kernel", returns :Kernel
   def const_grep(object, constant)
     regexp = Regexp.compile(constant.to_s, Regexp::IGNORECASE)
