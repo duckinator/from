@@ -6,12 +6,12 @@ require 'from/version'
 Gem::Specification.new do |spec|
   spec.name          = "from"
   spec.version       = From::VERSION
-  spec.authors       = ["Marie Markwell"]
-  spec.email         = ["me@marie.so"]
+  spec.authors       = ["Ellen Marie Dash"]
+  spec.email         = ["me@duckie.co"]
 
   spec.summary       = "Python-style from/import support, for Ruby."
   spec.description   = spec.summary
-  spec.homepage      = "https://gitlab.com/spinny/from"
+  spec.homepage      = "https://github.com/ruby-heresy/from"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
