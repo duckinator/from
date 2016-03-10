@@ -5,12 +5,14 @@ class From
     @module = module_from_path(path)
   end
 
-  def import(*constants)
-    import_to(Kernel, *constants)
+  def include(*constants)
+    # TODO: Use parent scope instead of Kernel.
+    # https://github.com/ruby-heresy/from/issues/2 
+    include_to(Kernel, *constants)
   end
 
   private
-  def import_to(object, *constants)
+  def include_to(object, *constants)
     constants.map do |k|
       object.const_set(k, @module.const_get(k))
     end
