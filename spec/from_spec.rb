@@ -26,7 +26,8 @@ RSpec.describe From do
     end
   end
 
-  context '#import_to' do
+
+  context '#include_to' do
     it 'includes the specified constants to the specified object' do
       subject.send(:include_to, collector, :A, :B)
 
