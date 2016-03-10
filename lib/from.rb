@@ -1,4 +1,5 @@
 require "from/version"
+require "wot/utilities"
 
 class From
   def initialize(path)
@@ -21,9 +22,13 @@ class From
   #
   # +from('some_library').include(:A)+ aliases +A+ to +SomeLibrary::A+.
   def include(*constants)
-    # TODO: Use parent scope instead of Kernel.
-    # https://github.com/ruby-heresy/from/issues/2 
-    include_to(Kernel, *constants)
+    # Set receiver to the place include() was called from.
+    receiver = Wot::Utilities.caller_binding.receiver
+
+    # If the receiver doesn't respond to .const_set, use the class of receiver.
+    receiver = receiver.class unless receiver.respond_to?(:const_set)
+
+    include_to(receiver, *constants)
   end
 
   private
