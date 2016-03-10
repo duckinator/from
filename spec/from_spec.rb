@@ -26,6 +26,16 @@ RSpec.describe From do
     end
   end
 
+  context '#import' do
+    it 'returns the specified constants' do
+      from_instance = From.new('some_library/test_file')
+
+      expect(from_instance.import(:A, :B)).to eq([
+        SomeLibrary::TestFile::A,
+        SomeLibrary::TestFile::B,
+      ])
+    end
+  end
 
   context '#include_to' do
     it 'includes the specified constants to the specified object' do

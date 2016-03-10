@@ -5,6 +5,14 @@ class From
     @module = module_from_path(path)
   end
 
+  def import(*constants)
+    ret = constants.map { |k| @module.const_get(k) }
+
+    ret = ret.first if ret.length == 1
+
+    ret
+  end
+
   def include(*constants)
     # TODO: Use parent scope instead of Kernel.
     # https://github.com/ruby-heresy/from/issues/2 
