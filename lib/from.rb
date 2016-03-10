@@ -5,6 +5,9 @@ class From
     @module = module_from_path(path)
   end
 
+  # Returns the specified constants from the module (as found by +from(path)+).
+  #
+  # +from('some_library').import(:A)+ returns +SomeLibrary::A+.
   def import(*constants)
     ret = constants.map { |k| @module.const_get(k) }
 
@@ -13,6 +16,10 @@ class From
     ret
   end
 
+  # Includes the specified constants from the module (as found by +from(path)+)
+  # into +Kernel+.
+  #
+  # +from('some_library').include(:A)+ aliases +A+ to +SomeLibrary::A+.
   def include(*constants)
     # TODO: Use parent scope instead of Kernel.
     # https://github.com/ruby-heresy/from/issues/2 
