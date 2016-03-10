@@ -27,8 +27,8 @@ RSpec.describe From do
   end
 
   context '#import_to' do
-    it 'imports the specified constants to the specified object' do
-      subject.send(:import_to, collector, :A, :B)
+    it 'includes the specified constants to the specified object' do
+      subject.send(:include_to, collector, :A, :B)
 
       expect(collector::A).to be(fake_module_a)
       expect(collector::B).to be(fake_module_b)
