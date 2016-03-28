@@ -37,7 +37,16 @@ end
 `bar.rb`:
 
 ```ruby
-from('foo').import(:Bar, :BAZ)
+bar, baz = from('foo').import(:Bar, :BAZ)
+
+bar == Foo::Bar #=> true
+baz == Foo::BAZ #=> true
+```
+
+`bar2.rb`:
+
+```ruby
+from('foo').include(:Bar, :BAZ)
 
 Bar == Foo::Bar #=> true
 BAZ == Foo::BAZ #=> true

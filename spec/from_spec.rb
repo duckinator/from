@@ -37,12 +37,14 @@ RSpec.describe From do
     end
   end
 
-  context '#include_to' do
+  context '#include' do
     it 'includes the specified constants to the specified object' do
-      subject.send(:include_to, collector, :A, :B)
+      # TODO: Make this less horrible.
+      klass = Class.new
+      klass.instance_exec(subject) { |subject| subject.include(:A, :B) }
 
-      expect(collector::A).to be(fake_module_a)
-      expect(collector::B).to be(fake_module_b)
+      expect(klass::A).to be(fake_module_a)
+      expect(klass::B).to be(fake_module_b)
     end
   end
 end
