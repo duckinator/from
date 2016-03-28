@@ -1,6 +1,6 @@
 # From
 
-A Ruby-equivalent to Python's `from X import Y`. The primary benefit is it avoids polluting the namespace with (e.g.) `VERSION`, as can happen when using `include`.
+An ES6-inspired method for importing things from Ruby libraries.
 
 ## Installation
 
