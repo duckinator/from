@@ -54,7 +54,7 @@ BAZ == Foo::BAZ #=> true
 
 ## Limitations
 
-Since `require`s are unscoped, this means it exposes the toplevel constant in a required file — as well as anything exposed by its dependencies. E.g., `from('net/socket').import(:TCP)` exposes `Net::Socket`.
+Since `require` is unscoped, From exposes all toplevel constants in a required file &mdash; as well as anything exposed by its dependencies. E.g., `from('net/socket').import(:TCP)` exposes `Net::Socket` and everything Ruby's built-in socket library exposes.
 
 ## Development
 
