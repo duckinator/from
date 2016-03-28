@@ -1,6 +1,6 @@
 # From
 
-An ES6-inspired method for importing things from Ruby libraries.
+An ES6-inspired library for importing things from other Ruby libraries.
 
 ## Installation
 
