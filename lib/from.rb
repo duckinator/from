@@ -1,5 +1,5 @@
 require "from/version"
-require "wot/utilities"
+require "debug_inspector"
 
 class From
   def initialize(path)
@@ -23,7 +23,7 @@ class From
   # +from('some_library').include(:A)+ aliases +A+ to +SomeLibrary::A+.
   def include(*constants)
     # Set receiver to the place include() was called from.
-    receiver = Wot::Utilities.caller_binding.receiver
+    receiver = caller_binding.receiver
 
     # If the receiver doesn't respond to .const_set, use the class of receiver.
     receiver = receiver.class unless receiver.respond_to?(:const_set)
@@ -59,6 +59,10 @@ class From
   # Given "foo/bar_baz", returns a refence to Foo::BarBaz.
   def module_from_path(path)
     path.split('/').reduce(Object, &method(:submodule_from_path_segment))
+  end
+
+  def caller_binding(offset=0)
+    RubyVM::DebugInspector.open {|i| i.frame_binding(3 + offset) }
   end
 end
 
