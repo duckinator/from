@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ellen Marie Dash"]
   spec.email         = ["me@duckie.co"]
 
-  spec.summary       = "Python-style from/import support, for Ruby."
+  spec.summary       = "ES6-inspired from/import support, for Ruby."
   spec.description   = spec.summary
-  spec.homepage      = "https://github.com/ruby-heresy/from"
+  spec.homepage      = "https://github.com/duckinator/from"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
@@ -20,9 +20,9 @@ Gem::Specification.new do |spec|
 
   # Ruby 2.5+ are still maintained. https://www.ruby-lang.org/en/downloads/branches/
   # From uses Binding#receiver, which requires Ruby 2.2.0 or newer.
-  spec.required_ruby_version = ">= 2.5.0"
+  spec.required_ruby_version = ">= 2.2.0"
 
-  spec.add_runtime_dependency "wot-utilities", "~> 1.0"
+  spec.add_runtime_dependency "debug_inspector"
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 13.0"
